@@ -26,6 +26,7 @@ const {
 const {
    getCompanyAllApplicants,
    getSingleApplicantAvatar,
+   getJobAllApplicants,
 } = require("../controllers/companyAllApplicants/companyAllApplicants");
 
 const { protect } = require("../middleware/authMiddleware");
@@ -56,5 +57,6 @@ router.get("/manage/job/:id", protect, getCompanyManageJob);
 // Company All Applicants Routes
 router.get("/all/applicants/:id", protect, getCompanyAllApplicants);
 router.get("/single/applicant/avatar/:id", protect, getSingleApplicantAvatar);
+router.get("/all/applicants/of/job/:id", protect, getJobAllApplicants);
 
 module.exports = router;

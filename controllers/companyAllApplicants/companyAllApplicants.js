@@ -32,4 +32,21 @@ const getSingleApplicantAvatar = asyncHandler(async (req, res) => {
    });
 });
 
-module.exports = { getCompanyAllApplicants, getSingleApplicantAvatar };
+const getJobAllApplicants = asyncHandler(async (req, res) => {
+   const appliedJobs = await CandidateAppliedJobs.find({
+         jobId: req.params.id,
+      });
+
+   const applicantIds = appliedJobs.map((applicant) => applicant.userID);
+
+   const jobApplicants = await CandidateProfile.find({ userID: { $in: applicantIds } });   
+
+   res.status(200).json({
+      message: "Job All Applicants", 
+      appliedJobs: appliedJobs, 
+      applicantIds: applicantIds,
+      jobApplicants: jobApplicants
+   });
+})
+
+module.exports = { getCompanyAllApplicants, getSingleApplicantAvatar, getJobAllApplicants };

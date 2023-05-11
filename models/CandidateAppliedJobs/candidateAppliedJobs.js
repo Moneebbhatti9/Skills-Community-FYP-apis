@@ -13,16 +13,15 @@ const CandidateAppliedJobs = mongoose.Schema(
          require: true,
       },
       
+      jobId: {
+         type: mongoose.Schema.Types.ObjectId,
+         require: true,
+      },
+
       userId: {
          type: String,
          require: true,
       },
-
-      jobId: {
-         type: String,
-         require: true,
-      },
-
    },
    {
       timestamps: true,
