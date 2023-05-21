@@ -43,8 +43,6 @@ const getJobAllApplicants = asyncHandler(async (req, res) => {
 
    res.status(200).json({
       message: "Job All Applicants", 
-      appliedJobs: appliedJobs, 
-      applicantIds: applicantIds,
       jobApplicants: jobApplicants
    });
 })
