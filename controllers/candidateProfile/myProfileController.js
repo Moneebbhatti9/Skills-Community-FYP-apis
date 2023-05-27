@@ -5,40 +5,8 @@ const CandidateProfileSocial = require("../../models/CandidaiteProfileModel/cand
 const CandidateProfileContactInfo = require("../../models/CandidaiteProfileModel/candidateProfileContactInfo");
 
 const candidateProfile = asyncHandler(async (req, res) => {
-   const {
-      fullName,
-      jobTitle,
-      phone,
-      email,
-      website,
-      currentSalary,
-      expectedSalary,
-      experience,
-      age,
-      educationLevel,
-      languages,
-      description,
-      userId,
-   } = req.body;
-
-   if (
-      !fullName ||
-      !jobTitle ||
-      !phone ||
-      !email ||
-      !website ||
-      !currentSalary ||
-      !experience ||
-      !age ||
-      !educationLevel ||
-      !languages ||
-      !description ||
-      !expectedSalary
-   ) {
-      req.status(400);
-      throw new Error("Please Add all values");
-   }
-
+   const { userId } = req.body;
+   
    const exist = await CandidateProfile.findOne({ userID: userId });
 
    if (exist) {
@@ -68,6 +36,7 @@ const candidateProfile = asyncHandler(async (req, res) => {
          educationLevel: req.body.educationLevel,
          languages: req.body.languages,
          description: req.body.description,
+         resume: req.body.resume,
          userID: req.user.id,
          userId: userId,
       });
