@@ -11,6 +11,23 @@ const getCompanyManageJob = asyncHandler(async (req, res) => {
    res.status(200).json({ message: "Managed Jobs", appliedJobs });
 });
 
+const deleteCompanyManageJob = asyncHandler(async (req, res) => {
+   const job = await CandidateAppliedJobs.findByIdAndDelete({ jobId: req.params.id });
+
+   if(!job) {
+      res.status(404);
+      throw new Error("Job not found");
+   }
+
+   try {
+      res.status(200).json({message: "Job Deleted", id: job._id});
+   } catch (error) {
+      res.status(400);
+      throw new Error(error); 
+   }
+}); 
+
 module.exports = {
    getCompanyManageJob,
+   deleteCompanyManageJob
 };
