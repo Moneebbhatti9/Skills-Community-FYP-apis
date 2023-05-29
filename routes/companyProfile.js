@@ -27,6 +27,7 @@ const {
    getCompanyAllApplicants,
    getSingleApplicantAvatar,
    getJobAllApplicants,
+   getSingleApplicantDetail,
 } = require("../controllers/companyAllApplicants/companyAllApplicants");
 
 const { protect } = require("../middleware/authMiddleware");
@@ -59,5 +60,6 @@ router.delete("/manage/job/:id", deleteCompanyManageJob);
 router.get("/all/applicants/:id", protect, getCompanyAllApplicants);
 router.get("/single/applicant/avatar/:id", protect, getSingleApplicantAvatar);
 router.get("/all/applicants/of/job/:id", protect, getJobAllApplicants);
+router.get("/single/applicants/of/job/detail/:id", protect, getSingleApplicantDetail);
 
 module.exports = router;
