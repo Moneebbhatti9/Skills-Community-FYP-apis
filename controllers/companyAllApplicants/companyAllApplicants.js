@@ -50,7 +50,7 @@ const getJobAllApplicants = asyncHandler(async (req, res) => {
 });
 
 const getSingleApplicantDetail = asyncHandler(async (req, res) => {
-   const applicant = await CandidateProfile.findOne({ userID: req.params.id});
+   const applicant = await CandidateProfile.findById(req.params.id);
 
   res.json({ message: "Applicant", applicant: applicant });
 });
