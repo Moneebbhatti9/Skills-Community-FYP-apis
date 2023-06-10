@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
-const port =  5000;
+const port = 5000;
 const connectDB = require("./config/db");
 const cors = require("cors");
 const { errorHandler } = require("./middleware/errorHandler");
@@ -26,6 +26,9 @@ app.use("/api/company", require("./routes/companyProfile"));
 
 // **Candidate Profile Route
 app.use("/api/candidate", require("./routes/candidateProfileRoute"));
+
+// **All Filters
+app.use("/api/filters", require("./routes/filtersRoutes"));
 
 app.use(errorHandler);
 app.listen(port, () => console.log(`Server started at ${port}`));
