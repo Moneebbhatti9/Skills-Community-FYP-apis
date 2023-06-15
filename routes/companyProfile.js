@@ -16,7 +16,7 @@ const {
 } = require("../controllers/companyProfile/companyProfile");
 
 const {
-   getCompanyManageJob, deleteCompanyManageJob,
+   getCompanyManageJob, deleteCompanyManageJob, getApproveApplication, getRejectedApplication
 } = require("../controllers/companyManageJobs/companyManageJobs");
 
 const {
@@ -55,6 +55,8 @@ router.get("/public/profile/logo/:id", getCompanyProfileLogoPublic);
 // Company Manage Jobs Routes
 router.get("/manage/job/:id", protect, getCompanyManageJob);
 router.delete("/manage/job/:id", deleteCompanyManageJob);
+router.post("/approve/application", getApproveApplication);
+router.post("/reject/application", getRejectedApplication);
 
 // Company All Applicants Routes
 router.get("/all/applicants/:id", protect, getCompanyAllApplicants);
